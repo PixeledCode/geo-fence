@@ -19,16 +19,16 @@ class User2View extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPos: null};
+      currentPos2: null};
     this.state = {
       range: null};
     this.handleClick = this.handleClick.bind(this);   
   }
 
   handleClick(e){
-    this.setState({ currentPos: e.latlng });
-    localStorage.setItem('Poslat2', this.state.currentPos.lat);
-    localStorage.setItem('Poslon2', this.state.currentPos.lng);
+    this.setState({ currentPos2: e.latlng });
+    localStorage.setItem('Poslat2', this.state.currentPos2.lat);
+    localStorage.setItem('Poslon2', this.state.currentPos2.lng);
     const lat1 = localStorage.getItem('Poslat1');
     const lon1 = localStorage.getItem('Poslon1');
     const lat2 = localStorage.getItem('Poslat2');
@@ -43,6 +43,13 @@ class User2View extends Component {
     }
   }
 
+  componentDidMount() {
+    const lat2 = localStorage.getItem("Poslat2");
+    const lon2 = localStorage.getItem("Poslon2");
+    if (lat2 && lon2) this.setState({ currentPos2: [lat2, lon2] });
+    if (!(this.state.range)) this.setState({range: 'Click on location'});
+  }
+
   render() {
     return (
       <div>
@@ -51,8 +58,8 @@ class User2View extends Component {
               url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
           />
           
-          { this.state.currentPos && <MyMarker icon={LocationIcon}  position={this.state.currentPos}>
-            <Popup position={this.state.currentPos}>
+          { this.state.currentPos2 && <MyMarker icon={LocationIcon}  position={this.state.currentPos2}>
+            <Popup position={this.state.currentPos2}>
               <pre>{this.state.range}</pre>
             </Popup>
           </MyMarker>}

@@ -18,20 +18,19 @@ class User1View extends Component {
     super(props);
     this.state = {
       currentPos: null};
-    this.state = {
-      Posit: null};
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    const lat1 = localStorage.getItem("Poslat1");
+    const lon1 = localStorage.getItem("Poslon1");
+    if (lat1 && lon1) this.setState({ currentPos: [lat1, lon1] });
   }
 
   handleClick(e){
     this.setState({ currentPos: e.latlng });
     localStorage.setItem('Poslat1', this.state.currentPos.lat);
     localStorage.setItem('Poslon1', this.state.currentPos.lng);
-    localStorage.setItem('Pos', this.state.currentPos);
-    const Posi = localStorage.getItem('Pos');
-    this.setState({ Posit: Posi });
-    console.log(this.state.Posit);
-    console.log(this.state.currentPos);
   }
   
   render() {
