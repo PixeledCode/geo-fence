@@ -22,15 +22,15 @@ class User1View extends Component {
   }
 
   componentDidMount() {
-    const lat1 = localStorage.getItem("Poslat1");
-    const lon1 = localStorage.getItem("Poslon1");
+    const lat1 = sessionStorage.getItem("Poslat1");
+    const lon1 = sessionStorage.getItem("Poslon1");
     if (lat1 && lon1) this.setState({ currentPos: [lat1, lon1] });
   }
 
   handleClick(e){
     this.setState({ currentPos: e.latlng });
-    localStorage.setItem('Poslat1', this.state.currentPos.lat);
-    localStorage.setItem('Poslon1', this.state.currentPos.lng);
+    sessionStorage.setItem('Poslat1', this.state.currentPos.lat);
+    sessionStorage.setItem('Poslon1', this.state.currentPos.lng);
   }
   
   render() {

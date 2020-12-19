@@ -27,12 +27,12 @@ class User2View extends Component {
 
   handleClick(e){
     this.setState({ currentPos2: e.latlng });
-    localStorage.setItem('Poslat2', this.state.currentPos2.lat);
-    localStorage.setItem('Poslon2', this.state.currentPos2.lng);
-    const lat1 = localStorage.getItem('Poslat1');
-    const lon1 = localStorage.getItem('Poslon1');
-    const lat2 = localStorage.getItem('Poslat2');
-    const lon2 = localStorage.getItem('Poslon2');
+    sessionStorage.setItem('Poslat2', this.state.currentPos2.lat);
+    sessionStorage.setItem('Poslon2', this.state.currentPos2.lng);
+    const lat1 = sessionStorage.getItem('Poslat1');
+    const lon1 = sessionStorage.getItem('Poslon1');
+    const lat2 = sessionStorage.getItem('Poslat2');
+    const lon2 = sessionStorage.getItem('Poslon2');
     dist = Distance(lat1, lon1, lat2, lon2);
     console.log(dist);
     if (dist <= 1) {
@@ -44,8 +44,8 @@ class User2View extends Component {
   }
 
   componentDidMount() {
-    const lat2 = localStorage.getItem("Poslat2");
-    const lon2 = localStorage.getItem("Poslon2");
+    const lat2 = sessionStorage.getItem("Poslat2");
+    const lon2 = sessionStorage.getItem("Poslon2");
     if (lat2 && lon2) this.setState({ currentPos2: [lat2, lon2] });
     if (!(this.state.range)) this.setState({range: 'Click on location'});
   }
