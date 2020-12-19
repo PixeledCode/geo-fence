@@ -4,8 +4,6 @@ html, body {
   font-family: "Montserrat";
   height: 100%;
   margin: 0;
-  background-color: #2f3036;
-  /* overflow: hidden; */
 }
 
 .leaflet-container {
