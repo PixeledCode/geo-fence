@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, Marker, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import Search from "react-leaflet-search";
+
 import {LocationIcon} from './LocationIcon';
 const MyMarker = props => {
 
@@ -38,6 +40,8 @@ class User1View extends Component {
       
       <div>
         <Map center={this.props.center} zoom={this.props.zoom} onClick={this.handleClick}>
+        <Search position="topleft" showMarker={false} zoom={13} closeResultsOnClick={true}/>
+          
           <TileLayer
               url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
           />

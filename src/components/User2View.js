@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import Search from "react-leaflet-search";
 import {LocationIcon} from './LocationIcon';
 import Distance from './Distance'
+
 var distance;
 var lat1, lon1, lat2, lon2;
 const MyMarker = props => {
@@ -25,15 +26,14 @@ class User2View extends Component {
       range: null};
     this.state = {
       dist: null};
-    this.handleClick = this.handleClick.bind(this);   
+    this.handleClick = this.handleClick.bind(this);
+    
   }
 
   handleClick(e){
     this.setState({ currentPos2: e.latlng });
     sessionStorage.setItem('Poslat2', this.state.currentPos2.lat);
     sessionStorage.setItem('Poslon2', this.state.currentPos2.lng);
-    // lat1 = sessionStorage.getItem('Poslat1');
-    // lon1 = sessionStorage.getItem('Poslon1');
     lat2 = sessionStorage.getItem('Poslat2');
     lon2 = sessionStorage.getItem('Poslon2');
     this.setState({ dist: Distance(lat1, lon1, lat2, lon2) })
@@ -75,6 +75,7 @@ class User2View extends Component {
     return (
       <div>
         <Map center={this.props.center} zoom={this.props.zoom} onClick={this.handleClick}>
+          <Search position="topleft" showMarker={false} zoom={13} closeResultsOnClick={true}/>
           <TileLayer
               url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
           />
