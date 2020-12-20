@@ -10,6 +10,8 @@ User 2 Marker shows a Popup whether it is in that 1KM range or not.
 
 Developed using [React Leaflet](https://react-leaflet.js.org/) and search is added using [React Leaflet Search](https://github.com/tumerorkun/react-leaflet-search)
 
+![GeoFence](https://media.giphy.com/media/IkIpFbU2YrzKArp67J/giphy.gif)
+
 #### Steps:
 ```
 npm install
