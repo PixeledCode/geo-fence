@@ -2,6 +2,6 @@
 
 #### Steps
 ```
-npm install Geo-Fence
+npm install
 npm start
 ```
